@@ -82,6 +82,39 @@ python scripts/mapi_validation.py
 
 Requires CSV files in `pulse-transit-time-ppg/1.1.0/csv/` directory.
 
+## MAPI Formula
+
+Current formula for estimating Mean Arterial Pressure Index:
+
+\[
+MAPI_{core} = 1 + \alpha \cdot (PI_{rel} - 1) + \beta \cdot (RT_{rel} - 1) + \gamma \cdot (HR_{rel} - 1)
+\]
+
+\[
+MAPI = MAPI_{core} \cdot w_{motion} \cdot w_{temp}
+\]
+
+Where:
+- \( PI_{rel} = \frac{A}{A_0} \) (pulse amplitude relative to baseline)
+- \( RT_{rel} = \frac{RT_0}{RT} \) (rise time relative to baseline)
+- \( HR_{rel} = \frac{HR}{HR_0} \) (heart rate relative to baseline)
+- \( w_{motion} = \frac{1}{1 + (\sigma_{acc} / \sigma_{ref})^2} \) (motion artifact weight)
+- \( w_{temp} = \frac{1}{1 + (\Delta T / T_{ref})^2} \) (temperature change weight)
+
+**Current Parameters (Optimized 2025-11-18):**
+- \( \alpha = 0.0774 \) (pulse amplitude weight)
+- \( \beta = 0.0 \) (rise time weight)
+- \( \gamma = 0.0 \) (heart rate weight)
+- \( \sigma_{ref} = 0.05 \) (reference motion std)
+- \( T_{ref} = 1.0 \) (reference temperature change)
+
+**Simplified Formula:**
+\[
+MAPI = [1 + 0.0774 \cdot (PI_{rel} - 1)] \cdot w_{motion} \cdot w_{temp}
+\]
+
+Note: Optimization found that only pulse amplitude contributes to MAP prediction in this dataset.
+
 ## Key Dependencies
 
 - `numpy` - Numerical computing

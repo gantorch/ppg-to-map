@@ -128,7 +128,7 @@ def compute_baseline(beats):
     return baseline
 
 def compute_mapi(beats, baseline,
-                 alpha=0.6, beta=0.3, gamma=0.1,
+                 alpha=0.0774, beta=0.0, gamma=0.0,
                  sigma_ref=0.05, temp_ref=1.0):
     """Your species-agnostic MAPI formula."""
     amp = beats["amp"]
