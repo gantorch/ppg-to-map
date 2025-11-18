@@ -20,3 +20,16 @@ Thumbs.db
 
 dist/
 build/
+
+data/
+*.csv
+*.xlsx
+*.json
+*.parquet
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# But you might want to keep small sample data
+!data/samples/
