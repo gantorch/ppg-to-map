@@ -11,7 +11,8 @@ ppg-to-map/
 │   ├── processed/        # Cleaned/transformed data
 │   └── external/         # Third-party datasets
 ├── scripts/
-│   └── download_data.py  # Dataset download
+│   ├── download_data.py    # Dataset download
+│   └── mapi_validation.py  # MAPI validation analysis
 ├── src/                  # Source code
 ├── notebooks/            # Jupyter notebooks
 ├── ppgtest/              # Virtual environment
@@ -57,6 +58,8 @@ ACTIVITIES = ['sit', 'walk', 'run']
 
 ## Usage
 
+### Loading WFDB Data
+
 ```python
 import wfdb
 import pandas as pd
@@ -68,6 +71,16 @@ record = wfdb.rdrecord('data/raw/s1_sit')
 df = pd.DataFrame(record.p_signal, columns=record.sig_name)
 df['time'] = np.arange(len(df)) / record.fs
 ```
+
+### MAPI Validation
+
+Run the MAPI (Mean Arterial Pressure Index) validation analysis:
+
+```bash
+python scripts/mapi_validation.py
+```
+
+Requires CSV files in `pulse-transit-time-ppg/1.1.0/csv/` directory.
 
 ## Key Dependencies
 

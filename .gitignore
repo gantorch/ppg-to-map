@@ -22,6 +22,7 @@ dist/
 build/
 
 data/
+pulse-transit-time-ppg/
 *.csv
 *.xlsx
 *.json
@@ -30,6 +31,9 @@ data/
 *.hdf5
 *.pkl
 *.pickle
+
+# Results
+results/
 
 # But you might want to keep small sample data
 !data/samples/
