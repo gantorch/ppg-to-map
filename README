@@ -1,4 +1,0 @@
-## Dataset Setup
-
-Download the dataset from https://physionet.org/files/pulse-transit-time-ppg/1.1.0/ and place in `data/raw/`:
-- `data/raw/ppg_data.csv`
